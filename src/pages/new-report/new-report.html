@@ -1,0 +1,93 @@
+<!--
+  Generated template for the NewReportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--
+  Generated template for the AddUserPage page.
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>{{ title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-card>
+    <img src="{{ imgPath }}"/>
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" (click)="getPhoto()" icon-start>
+          <ion-icon name='image'></ion-icon>
+          Choose Photo
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button clear small color="danger" (click)="takePhoto()" icon-start>
+          <ion-icon name='camera'></ion-icon>
+          Take Photo
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <form (ngSubmit)="addEdit()" [formGroup]="formAddEdit">
+    <ion-list padding *ngIf="report">
+      <ion-item>
+        <ion-label floating>Title</ion-label>
+        <ion-input type="text" value="{{ report.fldtitle }}" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Type</ion-label>
+        <ion-select formControlName="type">
+          <ion-option *ngFor="let q of reportTypes let i=index" value="{{ q }}" [selected]="(i==selectedItem).toString()">{{ q }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Description</ion-label>
+        <ion-textarea rows="2" maxLength="200" formControlName="description" value="{{ report.flddescription }}"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Measure</ion-label>
+        <ion-textarea rows="2" maxLength="200" formControlName="measure" value="{{ report.fldmeasure }}"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <button icon-start (click)="locate()" block outline color="danger" type="button" ion-button>
+          <ion-icon name='locate'></ion-icon>Locate
+        </button> 
+      </ion-item>
+      <ion-item *ngIf="global.tempFenceData">
+        <button icon-start block color="danger" ion-button><ion-icon name='checkmark'></ion-icon>Update Report</button>
+      </ion-item>
+    </ion-list>
+    <ion-list padding *ngIf="!report">
+      <ion-item>
+        <ion-label floating>Title</ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Type</ion-label>
+        <ion-select formControlName="type">
+          <ion-option *ngFor="let q of reportTypes let i=index" value="{{ q }}">{{ q }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Description</ion-label>
+        <ion-textarea rows="2" maxLength="200" formControlName="description"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Measure</ion-label>
+        <ion-textarea rows="2" maxLength="200" formControlName="measure"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <button icon-start (click)="locate()" block outline color="danger" type="button" ion-button>
+          <ion-icon name='locate'></ion-icon>Locate
+        </button> 
+      </ion-item>
+      <ion-item *ngIf="global.tempFenceData">
+        <button icon-start block color="danger" ion-button><ion-icon name='checkmark'></ion-icon>Save</button>
+      </ion-item>
+    </ion-list> 
+  </form>
+</ion-content>

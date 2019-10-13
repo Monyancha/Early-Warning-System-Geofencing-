@@ -1,0 +1,38 @@
+<!--
+  Generated template for the UsersPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+	<ion-navbar color="danger">
+		<ion-title>Users</ion-title>
+	</ion-navbar>
+	<ion-toolbar no-border-top color="danger">
+		<ion-searchbar showCancelButton autocomplete="on" color="danger" (ionInput)="filterUsers($event)" placeholder="Filter Users"></ion-searchbar>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<ion-item-sliding #item *ngFor="let user of users">
+			<ion-item >
+				<ion-avatar item-start>
+					<img src="assets/icon/user.png">
+				</ion-avatar>
+				<h2><b>{{ user.fldforename }} {{ user.fldsurname }}</b></h2>
+				<p>{{ user.fldphone_no }}</p>
+				<button *ngIf="user.fldstatus==='Active'" color="secondary" ion-button round outline item-end>{{ user.fldstatus }}</button>
+				<button *ngIf="user.fldstatus!=='Active'" color="danger" ion-button round outline item-end>{{ user.fldstatus }}</button>
+			</ion-item>
+			<ion-item-options side="right">
+				<button *ngIf="user.fldstatus!=='Active' && global.session.flduser_id!==user.flduser_id" ion-button color="secondary" (click)="activate(user.flduser_id)">
+					<ion-icon name="checkmark"></ion-icon>Activate
+				</button>
+				<button *ngIf="user.fldstatus==='Active' && global.session.flduser_id!==user.flduser_id" ion-button color="danger" (click)="deactivate(user.flduser_id)">
+					<ion-icon name="close"></ion-icon>Deactivate
+				</button>
+			</ion-item-options>
+		</ion-item-sliding>
+	</ion-list>
+</ion-content>

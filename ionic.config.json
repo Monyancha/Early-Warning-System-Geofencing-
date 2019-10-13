@@ -1,0 +1,7 @@
+{
+  "name": "AlertZW",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

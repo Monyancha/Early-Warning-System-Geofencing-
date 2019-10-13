@@ -1,0 +1,48 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar color="danger">
+		<ion-title>Signup</ion-title>
+		<button ion-button icon-only menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background-image:url('assets/imgs/bg.jpg');background-repeat: no-repeat;background-size: 100% 100%">
+	<form (ngSubmit)="signup()" [formGroup]="signupForm">
+		<ion-list class="list-form" style="margin-top:30px;margin-bottom: 30px">
+			<ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 17px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+				<ion-label floating>Phone No.</ion-label>
+				<ion-input type="text" style="color:white;" formControlName="phoneno"></ion-input>
+			</ion-item>      
+			<ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 17px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+				<ion-label floating>Forename</ion-label>
+				<ion-input type="text" style="color:white;" formControlName="forename"></ion-input>
+			</ion-item>
+			<ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 17px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+				<ion-label floating>Surname</ion-label>
+				<ion-input type="text" style="color:white;" formControlName="surname"></ion-input>
+			</ion-item>
+			<ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 17px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+				<ion-label floating>Password</ion-label>
+				<ion-input type="password" style="color:white;" formControlName="password"></ion-input>
+			</ion-item>
+			<ion-item-divider style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 17px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;"></ion-item-divider>
+		</ion-list> 
+		<button color="danger" bottom ion-button  block  type="submit">Register</button>   
+	</form>
+</ion-content>

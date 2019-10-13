@@ -1,0 +1,34 @@
+<!--
+  Generated template for the LocationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<!--
+  Generated template for the MapPage page.
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>Drag to Epicentre</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="save()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div id="floating-panel">
+    <ion-item>
+      <ion-label floating>Radius (Metres)</ion-label>
+      <ion-input type="number" [(ngModel)]="radius" (value)="radius" (ionChange)="setBuffer()"></ion-input>
+    </ion-item>
+  </div>
+  
+  <div #map id="map"></div>
+</ion-content>

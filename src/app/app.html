@@ -1,0 +1,64 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-grid>
+        <ion-row>
+          <img src="assets/icon/logo.png" style="width:100%;height:auto;">
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content padding>
+    <ion-list *ngIf="global.session">
+      <button menuClose ion-item detail-none>
+        <ion-icon item-start name="home"></ion-icon> Home
+      </button>
+      <button *ngIf="global.accessLevel==='STANDARD'" menuClose ion-item detail-none (click)="openPage(1)">
+        <ion-icon item-start name="notifications"></ion-icon> Notifications
+      </button>
+      <button *ngIf="global.accessLevel==='STANDARD'" menuClose ion-item detail-none (click)="openPage(2)">
+        <ion-icon item-start name="card"></ion-icon> My Contributions
+      </button>
+      <button *ngIf="global.accessLevel==='STANDARD'" menuClose ion-item detail-none (click)="openPage(3)">
+        <ion-icon item-start name="copy"></ion-icon> New Report
+      </button>
+
+      <button *ngIf="global.accessLevel==='ADMINISTRATOR'" menuClose ion-item detail-none (click)="openPage(4)">
+        <ion-icon item-start name="copy"></ion-icon> Pending Reports
+      </button>
+      <button *ngIf="global.accessLevel==='ADMINISTRATOR'" menuClose ion-item detail-none (click)="openPage(5)">
+        <ion-icon item-start name="document"></ion-icon> Active Reports
+      </button>
+      <button *ngIf="global.accessLevel==='ADMINISTRATOR'" menuClose ion-item detail-none (click)="openPage(6)">
+        <ion-icon item-start name="people"></ion-icon> Users
+      </button>
+
+
+      <ion-item-divider>Account</ion-item-divider>
+      <ion-item>
+        <ion-icon item-start name="contact"></ion-icon>
+        <h2><b>{{ global.session.fldforename }} {{ global.session.fldsurname }}</b></h2>
+        <hr/>
+        <h2 *ngIf="global.accessLevel==='STANDARD'">{{ global.session.fldphone_no }}</h2>
+        <h2 *ngIf="global.accessLevel==='ADMINISTRATOR'">{{ global.session.fldemail }}</h2>
+      </ion-item>
+      <button menuClose ion-item detail-none (click)="openPage(7)">
+        <ion-icon item-start name="cog"></ion-icon> Settings</button>
+        <button *ngIf="global.session" menuClose ion-item detail-none (click)="logout()">
+          <ion-icon item-start name="log-out"></ion-icon> Logout</button>
+        </ion-list>
+        <ion-list *ngIf="!global.session">
+          <button menuClose ion-item detail-none (click)="openPage(7)">
+            <ion-icon item-start name="cog"></ion-icon> Settings</button>
+          </ion-list>
+        </ion-content>
+        <ion-footer padding>
+          <ion-label text-center>
+            @AlertZW <br>by <b>Karen Masvanhise</b>
+          </ion-label>  
+        </ion-footer>
+      </ion-menu>
+
+      <!-- main navigation -->
+      <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

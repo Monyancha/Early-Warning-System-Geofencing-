@@ -1,0 +1,29 @@
+<!--
+  Generated template for the NotificationsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+	<ion-navbar color="danger">
+		<ion-title>Notifications</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-card *ngFor="let notification of notifications">
+		<ion-list>
+			<ion-item>
+				<ion-avatar item-start>
+					<img src="assets/icon/alert.png">
+				</ion-avatar>
+				<h2>[{{notification.fldreport_id}}] {{notification.fldtitle}}</h2>
+				<p>{{notification.flddescription}}</p>
+			</ion-item>
+			<ion-item>
+				<h2>Measure</h2>
+				<p>{{ notification.fldmeasure }}</p>
+			</ion-item>
+		</ion-list>
+	</ion-card>
+</ion-content>

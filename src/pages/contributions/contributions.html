@@ -1,0 +1,32 @@
+<!--
+  Generated template for the ContributionsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+	<ion-navbar color="danger">
+		<ion-title>Contributions [${{total/100 | number:'1.2-2' }}]</ion-title>
+	</ion-navbar>
+	<ion-toolbar no-border-top color="danger">
+		<ion-searchbar showCancelButton autocomplete="on" color="danger" (ionInput)="filterContributions($event)" placeholder="Filter Contributions"></ion-searchbar>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-card *ngFor="let contribution of contributions">
+		<ion-list>
+			<ion-item>
+				<ion-avatar item-start>
+					<img src="assets/icon/user.png">
+				</ion-avatar>
+				<h2>[{{contribution.flduser_id}}] {{contribution.fldforename}} {{ contribution.fldsurname }}</h2>
+				<p>{{contribution.flddescription}}</p>
+				<button color="danger" ion-button round outline item-end>${{ contribution.flddebit/100 | number:'1.2-2' }}</button>
+			</ion-item>
+			<ion-item>
+				<span item-end>{{contribution.fldtimestamp}}</span>
+			</ion-item>
+		</ion-list>
+	</ion-card>
+</ion-content>

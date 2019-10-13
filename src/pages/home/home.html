@@ -1,0 +1,59 @@
+<ion-header>
+	<ion-navbar color="danger">
+		<ion-title>AlertZW</ion-title>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding *ngIf="global.accessLevel==='STANDARD'">
+	<ion-grid style="padding-top: 50px;">
+		<ion-row>
+			<ion-col col-2></ion-col>
+			<ion-col col-8 style="margin-left: auto; margin-right: auto; display: block;">
+				<img src="assets/imgs/logo.png" style="width:100%;height:auto;">
+			</ion-col>
+			<ion-col col-2></ion-col>
+		</ion-row>
+	</ion-grid>
+	<ion-list *ngIf="global.session" style="margin-top: 30px;">
+		<ion-item>
+			<ion-icon name="grid" item-start></ion-icon>
+			<h2>{{ global.session.fldforename }} {{ global.session.fldsurname }}</h2>
+		</ion-item>
+		<ion-item>
+			<ion-icon name="contact" item-start></ion-icon>
+			<h2>{{ global.session.fldphone_no }}</h2>
+		</ion-item>
+	</ion-list>
+	<button ion-button icon-start block color="secondary" outline item-end (click)="scanArea()">
+		<ion-icon name="locate"></ion-icon> Scan Area</button>
+	<button ion-button icon-start block color="primary" outline item-end (click)="newReport()">
+		<ion-icon name="paper"></ion-icon> New Report</button>
+</ion-content>
+<ion-content padding *ngIf="global.accessLevel==='ADMINISTRATOR'">
+	<ion-grid style="padding-top: 50px;">
+		<ion-row>
+			<ion-col col-2></ion-col>
+			<ion-col col-8 style="margin-left: auto; margin-right: auto; display: block;">
+				<img src="assets/imgs/logo.png" style="width:100%;height:auto;">
+			</ion-col>
+			<ion-col col-2></ion-col>
+		</ion-row>
+	</ion-grid>
+	<ion-list *ngIf="global.session" style="margin-top: 30px;">
+		<ion-item>
+			<ion-icon name="grid" item-start></ion-icon>
+			<h2>{{ global.session.fldforename }} {{ global.session.fldsurname }}</h2>
+		</ion-item>
+		<ion-item>
+			<ion-icon name="contact" item-start></ion-icon>
+			<h2>{{ global.session.fldphone_no }}</h2>
+		</ion-item>
+	</ion-list>
+	<button ion-button icon-start block color="secondary" outline item-end (click)="pendingReports()">
+		<ion-icon name="locate"></ion-icon> Pending Reports</button>
+	<button ion-button icon-start block color="primary" outline item-end (click)="activeReports()">
+		<ion-icon name="paper"></ion-icon> Active Reports</button>
+</ion-content>
